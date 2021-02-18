@@ -22,7 +22,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "pages/api/google-callback.js", "pages/api/newsletter.js"  ],
   "exclude": [
     "node_modules"
   ]
