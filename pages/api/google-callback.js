@@ -37,9 +37,11 @@ function getNewToken(oAuth2Client, code, callback) {
   });
   console.log(code);
   oAuth2Client.getToken(code, (err, token) => {
+    console.log('bora pegar o token')
     if (err) return console.error('Error retrieving access token', err);
     oAuth2Client.setCredentials(token);
     // Store the token to disk for later program executions
+    console.log('consegui', token)
     fs.writeFile(TOKEN_PATH, JSON.stringify(token), (err) => {
       if (err) return console.error(err);
       console.log('Token stored to', TOKEN_PATH);
