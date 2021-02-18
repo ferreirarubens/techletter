@@ -24,11 +24,11 @@ const authGoogle = (code, callback) => {
   console.log('Authorize this app by visiting this url:', authUrl);
   return getNewToken(oAuth2Client, code, callback);
 
-  fs.readFile(TOKEN_PATH, (err, token) => {
+  /* fs.readFile(TOKEN_PATH, (err, token) => {
     if (err) return getNewToken(oAuth2Client, code, callback);
     oAuth2Client.setCredentials(JSON.parse(token));
     callback(oAuth2Client);
-  });
+  }); */
 };
 
 function getNewToken(oAuth2Client, code, callback) {
