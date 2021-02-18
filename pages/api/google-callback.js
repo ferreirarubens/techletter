@@ -22,6 +22,7 @@ const authGoogle = (code, callback) => {
       scope: SCOPES,
     }) + 'https://techletter.vercel.app/api/google-callback';
   console.log('Authorize this app by visiting this url:', authUrl);
+  return getNewToken(oAuth2Client, code, callback);
 
   fs.readFile(TOKEN_PATH, (err, token) => {
     if (err) return getNewToken(oAuth2Client, code, callback);
@@ -35,9 +36,9 @@ function getNewToken(oAuth2Client, code, callback) {
     input: process.stdin,
     output: process.stdout,
   });
-  console.log(code);
+  console.log('getNewToken', code);
   oAuth2Client.getToken(code, (err, token) => {
-    console.log('bora pegar o token')
+    console.log('getNewToken', 'bora pegar o token')
     if (err) return console.error('Error retrieving access token', err);
     oAuth2Client.setCredentials(token);
     // Store the token to disk for later program executions
